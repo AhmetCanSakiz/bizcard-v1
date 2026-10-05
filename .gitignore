@@ -6,3 +6,6 @@ node_modules/
 .env
 .env.*
 .vercel
+strix_runs/
+.dependency-check-*/
+.source-aware/
