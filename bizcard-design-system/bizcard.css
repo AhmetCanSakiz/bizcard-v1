@@ -1,0 +1,38 @@
+/* BizCard — component styles. Every value is a token from tokens.css. */
+.bc-root { font-family: var(--font-sans); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* Card */
+.bc-card { background: var(--surface-raised); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: var(--space-6); max-width: 360px; box-sizing: border-box; font-family: var(--font-sans); color: var(--ink); }
+.bc-card-head { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+.bc-avatar { width: 72px; height: 72px; border-radius: var(--radius-full); background: var(--brand-soft); color: var(--brand); display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; font-weight: 600; overflow: hidden; }
+.bc-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.bc-name { margin: 0; font-family: var(--font-display); font-size: 32px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.bc-role { margin: 0; font-size: 16px; line-height: 22px; font-weight: 500; color: var(--ink-muted); }
+.bc-divider { height: 1px; background: var(--line); border: 0; margin: var(--space-6) 0 var(--space-2); }
+.bc-list { display: flex; flex-direction: column; margin: 0 calc(-1 * var(--space-4)); }
+.bc-actions { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-6); }
+
+/* Contact row */
+.bc-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; min-height: 48px; box-sizing: border-box; }
+.bc-row:hover { background: var(--surface-sunken); }
+.bc-row:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bc-row-icon { width: 36px; height: 36px; flex: none; border-radius: var(--radius-sm); background: var(--brand-soft); color: var(--brand); display: grid; place-items: center; }
+.bc-row-icon svg { width: 20px; height: 20px; }
+.bc-row-text { display: flex; flex-direction: column; min-width: 0; }
+.bc-row-label { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+.bc-row-value { font-size: 15px; line-height: 22px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Buttons */
+.bc-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 48px; padding: 0 var(--space-6); border-radius: var(--radius-md); border: 1.5px solid transparent; font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; cursor: pointer; width: 100%; box-sizing: border-box; }
+.bc-btn svg { width: 20px; height: 20px; }
+.bc-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bc-btn-primary { background: var(--brand); color: var(--on-brand); }
+.bc-btn-secondary { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.bc-btn-secondary .bc-btn-dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--accent); }
+.bc-btn-accent { background: var(--accent); color: var(--on-accent); }
+.bc-btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+/* Scan counter */
+.bc-chip { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); background: var(--brand-soft); color: var(--ink); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+.bc-chip strong { font-weight: 700; color: var(--ink); }
+.bc-chip svg { width: 14px; height: 14px; color: var(--brand); }

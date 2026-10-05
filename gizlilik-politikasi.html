@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gizlilik Politikası · BizCard</title>
+  <meta name="description" content="BizCard dijital kartvizit gizlilik politikası.">
+  <link rel="stylesheet" href="bizcard-design-system/tokens.css">
+  <link rel="stylesheet" href="bizcard-design-system/bizcard.css">
+  <style>
+    /* Yasal metin sayfası: yalnızca token kullanılır */
+    html, body { margin: 0; }
+    body {
+      background: var(--surface);
+      min-height: 100vh;
+      padding: var(--space-8) var(--space-4);
+      box-sizing: border-box;
+    }
+    .doc { max-width: 680px; margin: 0 auto; font-size: 15px; line-height: 22px; color: var(--ink); overflow-wrap: break-word; }
+    .back {
+      display: inline-flex; align-items: center; gap: var(--space-1);
+      min-height: 48px; padding: 0 var(--space-2); margin-left: calc(-1 * var(--space-2));
+      border-radius: var(--radius-sm);
+      font-size: 14px; line-height: 20px; font-weight: 600; color: var(--brand); text-decoration: none;
+    }
+    .back svg { width: 20px; height: 20px; }
+    .back:hover { background: var(--surface-sunken); }
+    .doc a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .doc-title { margin: var(--space-4) 0 var(--space-4); font-size: 20px; line-height: 28px; font-weight: 700; color: var(--ink); }
+    .doc h2 { margin: var(--space-6) 0 var(--space-3); font-size: 16px; line-height: 22px; font-weight: 700; color: var(--ink); scroll-margin-top: var(--space-4); }
+    .doc h3 { margin: var(--space-6) 0 var(--space-2); font-size: 15px; line-height: 22px; font-weight: 600; color: var(--ink); }
+    .doc p { margin: 0 0 var(--space-3); }
+    .doc .meta { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+    .doc .meta strong { color: var(--ink); }
+    .doc ul, .doc ol { margin: 0 0 var(--space-3); padding-left: var(--space-6); }
+    .doc li { margin-bottom: var(--space-2); }
+    .doc ul.lettered { list-style: none; padding-left: 0; }
+    .doc code { font-size: 14px; padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--surface-sunken); }
+    .doc .bc-divider { margin: var(--space-6) 0; }
+    .note { margin: 0 0 var(--space-3); padding: var(--space-3) var(--space-4); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: var(--surface-sunken); }
+    .note p { margin: 0; }
+    .table-wrap { overflow-x: auto; margin: 0 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-raised); -webkit-overflow-scrolling: touch; }
+    .doc table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 20px; }
+    .doc th, .doc td { text-align: left; vertical-align: top; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); min-width: 120px; }
+    .doc thead th { font-weight: 600; color: var(--ink); background: var(--surface-sunken); }
+    .doc tbody th { font-weight: 600; }
+    .doc tbody tr:last-child th, .doc tbody tr:last-child td { border-bottom: 0; }
+    /* Doldurulması gereken yer tutucular */
+    mark.ph { background: var(--brand-soft); color: var(--ink); border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); padding: 0 var(--space-1); }
+    .doc-footer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); margin-top: var(--space-8); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+    .doc-footer a:not(.back) { display: inline-flex; align-items: center; min-height: 48px; color: var(--ink-muted); }
+    .doc-footer strong { font-weight: 700; color: var(--ink); letter-spacing: 0; }
+  </style>
+</head>
+<body class="bc-root">
+  <main class="doc">
+    <a class="back" href="index.html" data-back><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Karta dön</a>
+
+    <h1 class="doc-title">BizCard Gizlilik Politikası</h1>
+
+    <p class="meta"><strong>Yürürlük tarihi:</strong> <mark class="ph">[Yürürlük Tarihi]</mark><br>
+    <strong>Son güncelleme:</strong> <mark class="ph">[Son Güncelleme Tarihi]</mark></p>
+
+    <p>Bu politika, BizCard dijital kartvizit sayfasını ziyaret ettiğinizde hangi bilgilerin işlendiğini, neden işlendiğini ve haklarınızı sade bir dille anlatır.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b1">1. Kapsam</h2>
+
+    <p>Bu politika, <mark class="ph">[Şirket Unvanı]</mark> ("biz") tarafından yayınlanan BizCard dijital kartvizit web sayfası (<mark class="ph">[Web Sitesi Adresi]</mark>) için geçerlidir. Sayfa; kartvizit sahibinin iletişim bilgilerini gösterir, kartviziti telefon rehberinize kaydetmenizi sağlar, toplantı talebi göndermenize ve kartvizit sahibi hakkında soru sormanıza imkân verir.</p>
+
+    <p>Kişisel verilerinizden sorumlu olan veri sorumlusu: <strong><mark class="ph">[Şirket Unvanı]</mark></strong>, <mark class="ph">[Adres]</mark>.</p>
+
+    <p>Sayfadaki bağlantılarla gittiğiniz başka siteler (ör. LinkedIn, GitHub, Google Haritalar, kartvizit sahibinin web sitesi) kendi gizlilik politikalarına tabidir; bu politika o siteleri kapsamaz.</p>
+
+    <p>Toplantı talebi formu için ayrıca <mark class="ph">[KVKK Aydınlatma Metni Adresi]</mark> adresindeki KVKK Aydınlatma Metni geçerlidir.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b2">2. Toplanan veriler</h2>
+
+    <p>BizCard'da <strong>hesap açma, giriş yapma veya üyelik yoktur.</strong> Sayfayı yalnızca görüntülediğinizde sizden bir form bilgisi alınmaz. Veri yalnızca aşağıdaki özellikleri kendiniz kullandığınızda işlenir.</p>
+
+    <h3 id="b2-1">2.1 Toplantı talebi formu</h3>
+
+    <p>Formu doldurup "Talep Gönder" düğmesine bastığınızda şu bilgiler işlenir:</p>
+
+    <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Bilgi</th><th scope="col">Zorunlu mu?</th></tr></thead>
+    <tbody>
+    <tr><td>Ad soyad</td><td>Evet</td></tr>
+    <tr><td>E-posta adresi</td><td>Evet</td></tr>
+    <tr><td>Telefon numarası</td><td>Hayır</td></tr>
+    <tr><td>Görüşme konusu</td><td>Evet</td></tr>
+    <tr><td>Tercih ettiğiniz tarih ve saat</td><td>Evet</td></tr>
+    <tr><td>Onay kutusunun işaretlendiği bilgisi</td><td>Evet</td></tr>
+    </tbody>
+    </table></div>
+
+    <p>Bu bilgiler iki yoldan biriyle iletilir:</p>
+
+    <ul>
+    <li><strong>E-posta taslağı:</strong> Sayfa, bilgilerinizi içeren bir e-posta taslağını cihazınızdaki e-posta uygulamasında açar. E-posta, siz "Gönder"e basmadan gönderilmez.</li>
+    <li><strong>Otomasyon servisi (webhook):</strong> Bu özellik etkinleştirilmişse bilgileriniz doğrudan <mark class="ph">[Otomasyon Servisi Sağlayıcısı]</mark> üzerinde çalışan bir iş akışına gönderilir.</li>
+    </ul>
+
+    <blockquote class="note"><p>Not: Tarih seçimi yalnızca formdaki bir alandır. Sayfa, takviminize erişmez ve takviminize kayıt eklemez.</p></blockquote>
+
+    <h3 id="b2-2">2.2 "Soru sor" sohbet penceresi</h3>
+
+    <p>Sohbet penceresine yazdığınız sorular, cevap üretilmesi için <mark class="ph">[Otomasyon Servisi Sağlayıcısı]</mark> üzerindeki bir iş akışına gönderilir. Her soruyla birlikte, aynı sohbeti takip etmek için tarayıcıda o an rastgele üretilen bir <strong>oturum kimliği</strong> de gönderilir. Bu kimlik sizin adınızı, cihazınızı veya konumunuzu içermez.</p>
+
+    <p>Sohbet geçmişi tarayıcınızda kaydedilmez; sayfayı kapattığınızda veya yenilediğinizde silinir. Lütfen sohbete kişisel veya hassas bilgi yazmayın.</p>
+
+    <h3 id="b2-3">2.3 Teknik veriler</h3>
+
+    <p>Sayfa açıldığında tarayıcınız, sayfayı ve kullandığı dosyaları indirmek için barındırma sağlayıcısına ve üçüncü taraf sunuculara (bkz. Bölüm 5) bağlanır. Bu sırada <strong>IP adresiniz, tarayıcı ve cihaz bilgileriniz, istek zamanı</strong> gibi teknik bilgiler bu sağlayıcıların sunucu kayıtlarına düşebilir. Bu kayıtlar sayfanın kendi kodu tarafından toplanmaz; sağlayıcıların standart altyapısının bir parçasıdır.</p>
+
+    <h3 id="b2-4">2.4 Toplanmayan veriler</h3>
+
+    <p>Sayfanın mevcut kodu:</p>
+
+    <ul>
+    <li>Konumunuza erişmez.</li>
+    <li>Kamera, mikrofon veya rehberinize erişmez.</li>
+    <li>Ziyaretçi analitiği, reklam veya izleme aracı kullanmaz.</li>
+    <li>QR kod taramalarını saymaz veya kaydetmez.</li>
+    </ul>
+
+    <hr class="bc-divider">
+
+    <h2 id="b3">3. Verilerin kullanım amaçları</h2>
+
+    <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Veri</th><th scope="col">Amaç</th></tr></thead>
+    <tbody>
+    <tr><td>Toplantı talebi bilgileri</td><td>Talebinizi değerlendirmek, size dönüş yapmak ve görüşme planlamak</td></tr>
+    <tr><td>Sohbet soruları ve oturum kimliği</td><td>Sorunuza cevap vermek ve aynı sohbet içinde bağlamı korumak</td></tr>
+    <tr><td>Teknik veriler</td><td>Sayfayı size ulaştırmak, hizmetin güvenliğini ve çalışmasını sağlamak</td></tr>
+    </tbody>
+    </table></div>
+
+    <p>Verileriniz bu amaçlar dışında kullanılmaz, satılmaz ve reklam amacıyla işlenmez.</p>
+
+    <p><strong>Hukuki dayanak:</strong> Toplantı talebi için açık onayınız ve bir sözleşmenin kurulmasına yönelik talebiniz; teknik veriler için hizmetin sunulmasındaki meşru menfaat. <mark class="ph">[Hukuki dayanakları hukuk danışmanınızla teyit edin.]</mark></p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b4">4. Çerezler ve yerel depolama</h2>
+
+    <p>BizCard sayfasının kodu <strong>çerez kullanmaz</strong> ve tarayıcınızın yerel depolama alanlarına (localStorage, sessionStorage) <strong>veri yazmaz.</strong></p>
+
+    <p>Form bilgileri ve sohbet mesajları yalnızca sayfa açıkken tarayıcı belleğinde tutulur; sayfa kapatıldığında silinir.</p>
+
+    <p>Bölüm 5'te listelenen üçüncü taraf sağlayıcılar, kendi altyapıları gereği teknik çerez veya benzeri araçlar kullanabilir. Bunlar ilgili sağlayıcının politikasına tabidir.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b5">5. Üçüncü taraflar</h2>
+
+    <p>Sayfa çalışırken aşağıdaki hizmetlerle bağlantı kurulur:</p>
+
+    <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Hizmet</th><th scope="col">Ne için kullanılır</th><th scope="col">Ne zaman bağlanılır</th></tr></thead>
+    <tbody>
+    <tr><td><strong>Vercel</strong> (barındırma)</td><td>Sayfanın yayınlanması</td><td>Sayfayı her açtığınızda</td></tr>
+    <tr><td><strong>jsDelivr</strong> (içerik dağıtım ağı)</td><td>React, Babel ve QR kod kütüphanelerinin yüklenmesi</td><td>Sayfayı her açtığınızda</td></tr>
+    <tr><td><strong>Google Fonts</strong></td><td>Yazı tiplerinin (Fraunces, Plus Jakarta Sans) yüklenmesi</td><td>Sayfayı her açtığınızda</td></tr>
+    <tr><td><strong><mark class="ph">[Otomasyon Servisi Sağlayıcısı]</mark></strong></td><td>Toplantı taleplerinin ve sohbet sorularının iletilmesi</td><td>Yalnızca formu gönderdiğinizde veya soru sorduğunuzda (özellik etkinse)</td></tr>
+    <tr><td><strong>E-posta uygulamanız</strong></td><td>Toplantı talebi taslağının açılması, e-posta bağlantısı</td><td>Yalnızca ilgili bağlantıya veya düğmeye bastığınızda</td></tr>
+    <tr><td><strong>Telefon uygulamanız</strong></td><td>Arama başlatma</td><td>Yalnızca telefon satırına bastığınızda</td></tr>
+    <tr><td><strong>Google Haritalar</strong></td><td>Kartvizit sahibinin konumunun gösterilmesi</td><td>Yalnızca konum satırına bastığınızda</td></tr>
+    <tr><td><strong>LinkedIn, GitHub, kartvizit sahibinin web sitesi</strong></td><td>Profil ve site bağlantıları</td><td>Yalnızca bağlantıya bastığınızda</td></tr>
+    </tbody>
+    </table></div>
+
+    <p>Bu sağlayıcılardan bazılarının sunucuları Türkiye dışında olabilir. Bu durumda verileriniz yurt dışına aktarılmış olur. <mark class="ph">[Yurt dışı aktarım dayanağını ve sağlayıcıların sunucu konumlarını belirtin.]</mark></p>
+
+    <p><strong>QR kod:</strong> Kartvizitteki QR kod, tarayıcınızda yerel olarak oluşturulur ve yalnızca kartvizitin adresini içerir. QR kod oluşturmak için hiçbir veri dışarı gönderilmez.</p>
+
+    <p><strong>"Kartı Kaydet" (vCard):</strong> Bu düğme, kartvizit sahibinin bilgilerini içeren bir <code>.vcf</code> dosyasını doğrudan cihazınıza indirir. Dosya tarayıcınızda oluşturulur; bu işlem sırasında sizinle ilgili hiçbir bilgi gönderilmez.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b6">6. Saklama süresi</h2>
+
+    <ul>
+    <li><strong>Toplantı talebi bilgileri:</strong> Talebiniz sonuçlandırılana kadar ve sonrasında en fazla <mark class="ph">[Saklama Süresi]</mark> boyunca saklanır, ardından silinir veya anonim hâle getirilir.</li>
+    <li><strong>Sohbet soruları:</strong> Tarayıcınızda saklanmaz. <mark class="ph">[Otomasyon Servisi Sağlayıcısı]</mark> tarafında saklanıyorsa süresi: <mark class="ph">[Sohbet Kayıtları Saklama Süresi]</mark>.</li>
+    <li><strong>E-posta ile gelen talepler:</strong> Kartvizit sahibinin e-posta kutusunda <mark class="ph">[E-posta Saklama Süresi]</mark> boyunca tutulur.</li>
+    <li><strong>Teknik sunucu kayıtları:</strong> İlgili sağlayıcının (Vercel, jsDelivr, Google) kendi saklama sürelerine tabidir.</li>
+    </ul>
+
+    <hr class="bc-divider">
+
+    <h2 id="b7">7. Güvenlik</h2>
+
+    <ul>
+    <li>Sayfa HTTPS üzerinden sunulur; tarayıcınız ile sunucular arasındaki veri trafiği şifrelenir.</li>
+    <li>Form ve sohbet verileri yalnızca gerekli olan hizmete gönderilir.</li>
+    <li>Sayfa sizin için hesap, şifre veya ödeme bilgisi saklamaz.</li>
+    <li><mark class="ph">[Ek teknik ve idari güvenlik önlemlerinizi belirtin.]</mark></li>
+    </ul>
+
+    <p>İnternet üzerinden yapılan hiçbir aktarım tamamen risksiz değildir. Lütfen formlara ve sohbete hassas bilgi (ör. sağlık bilgisi, kimlik numarası) yazmayın.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b8">8. Haklarınız</h2>
+
+    <p>6698 sayılı Kişisel Verilerin Korunması Kanunu'nun (KVKK) 11. maddesi kapsamında şu haklara sahipsiniz:</p>
+
+    <ul>
+    <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme,</li>
+    <li>İşlenmişse buna ilişkin bilgi isteme,</li>
+    <li>İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+    <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,</li>
+    <li>Eksik veya yanlış işlenmişse düzeltilmesini isteme,</li>
+    <li>Silinmesini veya yok edilmesini isteme,</li>
+    <li>Düzeltme ve silme işlemlerinin, verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+    <li>Otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonuç çıkmasına itiraz etme,</li>
+    <li>Kanuna aykırı işleme nedeniyle zarara uğramanız hâlinde zararın giderilmesini talep etme.</li>
+    </ul>
+
+    <p>Toplantı talebi için verdiğiniz onayı istediğiniz zaman geri alabilirsiniz.</p>
+
+    <p>Başvurularınızı Bölüm 10'daki iletişim bilgilerinden bize iletebilirsiniz. Başvurunuz en geç <strong>30 gün</strong> içinde ücretsiz olarak sonuçlandırılır. Cevabımızdan memnun kalmazsanız Kişisel Verileri Koruma Kurulu'na şikâyette bulunabilirsiniz.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b9">9. Değişiklikler</h2>
+
+    <p>Bu politikayı, sayfaya yeni özellikler eklendiğinde veya yasal gereklilikler değiştiğinde güncelleyebiliriz. Güncel sürüm her zaman bu sayfada yayınlanır ve en üstteki "Son güncelleme" tarihi değiştirilir. Önemli değişikliklerde sayfada ayrıca bilgilendirme yaparız.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b10">10. İletişim</h2>
+
+    <p>Bu politika veya kişisel verileriniz hakkındaki sorularınız için:</p>
+
+    <ul>
+    <li><strong>Veri sorumlusu:</strong> <mark class="ph">[Şirket Unvanı]</mark></li>
+    <li><strong>Adres:</strong> <mark class="ph">[Adres]</mark></li>
+    <li><strong>E-posta:</strong> <mark class="ph">[E-posta]</mark></li>
+    <li><strong>KEP adresi:</strong> <mark class="ph">[KEP Adresi]</mark></li>
+    <li><strong>Telefon:</strong> <mark class="ph">[Telefon]</mark></li>
+    </ul>
+
+    <hr class="bc-divider">
+    <footer class="doc-footer">
+      <a class="back" href="index.html" data-back><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Karta dön</a>
+      <a href="kvkk-aydinlatma-metni.html">KVKK Aydınlatma Metni</a>
+      <strong>BizCard</strong>
+    </footer>
+  </main>
+  <script>
+    // Karttan gelindiyse aynı karta dön (index.html veya index-react.html)
+    try {
+      var ref = document.referrer ? new URL(document.referrer) : null;
+      if (ref && ref.origin === location.origin) {
+        if (!/(gizlilik-politikasi|kvkk-aydinlatma-metni)\.html$/.test(ref.pathname)) {
+          document.querySelectorAll("[data-back]").forEach(function (a) { a.href = ref.href; });
+        }
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ahmet · BizCard</title>
+  <meta name="description" content="Ahmet - Power Apps Geliştirici. Dijital kartvizit.">
+  <link rel="stylesheet" href="bizcard-design-system/tokens.css">
+  <link rel="stylesheet" href="bizcard-design-system/bizcard.css">
+  <style>
+    /* Sayfa düzeni: yalnızca token kullanılır */
+    html, body { margin: 0; }
+    body {
+      background: var(--surface);
+      min-height: 100vh;
+      padding: var(--space-8) var(--space-4);
+      box-sizing: border-box;
+    }
+    .page { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+    .bc-card { width: 100%; }
+    .bc-card-head > div { min-width: 0; }
+    .bc-name { overflow-wrap: anywhere; }
+
+    .bc-btn { transition: opacity 150ms ease; }
+    .bc-btn:active { opacity: 0.85; }
+
+    .footer {
+      font-family: var(--font-sans);
+      font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--ink-muted);
+      text-align: center;
+    }
+    .footer strong { font-weight: 700; color: var(--ink); letter-spacing: 0; }
+    .footer a { display: inline-flex; align-items: center; min-height: 48px; color: var(--ink-muted); }
+    .footer a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .footer-links { margin: 0; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bc-btn { transition: none; }
+    }
+  </style>
+</head>
+<body class="bc-root">
+  <main class="page">
+    <article class="bc-card">
+      <div class="bc-card-head">
+        <!-- Fotoğraf için: <div class="bc-avatar"><img src="foto.jpg" alt=""></div> -->
+        <div class="bc-avatar" id="avatar" aria-hidden="true"></div>
+        <div>
+          <h1 class="bc-name" id="name"></h1>
+          <p class="bc-role" id="role"></p>
+        </div>
+      </div>
+
+      <hr class="bc-divider">
+
+      <div class="bc-list">
+        <a class="bc-row" id="rPhone" href="#">
+          <span class="bc-row-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <span class="bc-row-text"><span class="bc-row-label">Telefon</span><span class="bc-row-value" id="tPhone"></span></span>
+        </a>
+        <a class="bc-row" id="rMail" href="#">
+          <span class="bc-row-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="bc-row-text"><span class="bc-row-label">E-posta</span><span class="bc-row-value" id="tMail"></span></span>
+        </a>
+        <a class="bc-row" id="rWeb" href="#" target="_blank" rel="noopener">
+          <span class="bc-row-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+          <span class="bc-row-text"><span class="bc-row-label">Web</span><span class="bc-row-value" id="tWeb"></span></span>
+        </a>
+        <a class="bc-row" id="rLoc" href="#" target="_blank" rel="noopener">
+          <span class="bc-row-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span class="bc-row-text"><span class="bc-row-label">Konum</span><span class="bc-row-value" id="tLoc"></span></span>
+        </a>
+        <a class="bc-row" id="rLi" href="#" target="_blank" rel="noopener">
+          <span class="bc-row-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+          <span class="bc-row-text"><span class="bc-row-label">LinkedIn</span><span class="bc-row-value" id="tLi"></span></span>
+        </a>
+      </div>
+
+      <div class="bc-actions">
+        <button class="bc-btn bc-btn-primary" id="saveBtn" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
+          <span id="saveLabel">Kartı Kaydet</span>
+        </button>
+        <a class="bc-btn bc-btn-secondary" id="meetBtn" href="#">
+          <span class="bc-btn-dot" aria-hidden="true"></span>
+          Toplantı Talep Et
+        </a>
+      </div>
+    </article>
+
+    <p class="footer"><strong>BizCard</strong></p>
+    <p class="footer footer-links">
+      <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> · <a href="kvkk-aydinlatma-metni.html">KVKK Aydınlatma Metni</a>
+    </p>
+    <p class="sr-only" id="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    /* ================================================
+       BİLGİLERİNİZİ BURADAN DEĞİŞTİRİN
+       ================================================ */
+    const PROFILE = {
+      firstName: "Ahmet",
+      lastName:  "Soyadı",
+      title:     "Power Apps Geliştirici",
+      company:   "Şirket Adı",
+      phone:     "+905551234567",          // boşluksuz, ülke koduyla
+      phoneText: "+90 555 123 45 67",      // ekranda görünen hali
+      email:     "devpowerappsahmet@gmail.com",
+      website:   "https://ornek.com",
+      location:  "İstanbul, Türkiye",
+      linkedin:  "https://www.linkedin.com/in/kullaniciadi"
+    };
+    /* ================================================ */
+
+    const $ = id => document.getElementById(id);
+    const fullName = `${PROFILE.firstName} ${PROFILE.lastName}`;
+    const stripProto = url => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+
+    // Kartı doldur
+    $("name").textContent = fullName;
+    $("role").textContent = [PROFILE.title, PROFILE.company].filter(Boolean).join(" · ");
+    if (!$("avatar").querySelector("img")) {
+      $("avatar").textContent = (PROFILE.firstName[0] + (PROFILE.lastName[0] || "")).toLocaleUpperCase("tr");
+    }
+    $("tPhone").textContent = PROFILE.phoneText;
+    $("tMail").textContent = PROFILE.email;
+    $("tWeb").textContent = stripProto(PROFILE.website);
+    $("tLoc").textContent = PROFILE.location;
+    $("tLi").textContent = stripProto(PROFILE.linkedin);
+    document.title = `${fullName} · BizCard`;
+
+    $("rPhone").href = `tel:${PROFILE.phone}`;
+    $("rMail").href = `mailto:${PROFILE.email}`;
+    $("rWeb").href = PROFILE.website;
+    $("rLoc").href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PROFILE.location)}`;
+    $("rLi").href = PROFILE.linkedin;
+
+    // Toplantı talebi: şimdilik e-posta taslağı açar (ileride n8n webhook'u bağlanabilir)
+    $("meetBtn").href = `mailto:${PROFILE.email}?subject=${encodeURIComponent("Toplantı talebi")}` +
+      `&body=${encodeURIComponent(`Merhaba ${PROFILE.firstName},\n\nSizinle bir toplantı planlamak istiyorum. Uygun olduğunuz zamanları paylaşabilir misiniz?\n\n`)}`;
+
+    // vCard (rehbere kaydetmek için)
+    const esc = s => String(s).replace(/([\\,;])/g, "\\$1");
+    function buildVCard() {
+      return [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${esc(PROFILE.lastName)};${esc(PROFILE.firstName)};;;`,
+        `FN:${esc(fullName)}`,
+        `ORG:${esc(PROFILE.company)}`,
+        `TITLE:${esc(PROFILE.title)}`,
+        `TEL;TYPE=CELL:${PROFILE.phone}`,
+        `EMAIL:${PROFILE.email}`,
+        `URL:${PROFILE.website}`,
+        `URL;TYPE=LinkedIn:${PROFILE.linkedin}`,
+        `ADR:;;;${esc(PROFILE.location)};;;`,
+        "END:VCARD"
+      ].join("\r\n");
+    }
+
+    // Kartı Kaydet: Kaydediliyor… → Kart kaydedildi → Kartı Kaydet
+    $("saveBtn").addEventListener("click", () => {
+      const btn = $("saveBtn"), label = $("saveLabel");
+      btn.disabled = true;
+      label.textContent = "Kaydediliyor…";
+      try {
+        const blob = new Blob([buildVCard()], { type: "text/vcard;charset=utf-8" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `${fullName.replace(/\s+/g, "_")}.vcf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+        label.textContent = "Kart kaydedildi";
+      } catch (e) {
+        label.textContent = "Hata: kaydedilemedi. Tekrar deneyin.";
+      }
+      btn.disabled = false;
+      $("status").textContent = label.textContent;
+      setTimeout(() => { label.textContent = "Kartı Kaydet"; }, 2000);
+    });
+  </script>
+</body>
+</html>

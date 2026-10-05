@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BizCard</title>
+  <meta name="description" content="Dijital kartvizit.">
+  <link rel="stylesheet" href="bizcard-design-system/tokens.css">
+  <link rel="stylesheet" href="bizcard-design-system/bizcard.css">
+  <style>
+    /* Sayfa düzeni: yalnızca token kullanılır */
+    html, body { margin: 0; }
+    body {
+      background: var(--surface);
+      min-height: 100vh;
+      padding: var(--space-8) var(--space-4);
+      box-sizing: border-box;
+    }
+    .page { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+    .bc-card { width: 100%; }
+    .bc-card-head > div { min-width: 0; }
+    .bc-name { overflow-wrap: anywhere; }
+
+    .bc-btn { transition: opacity 150ms ease; text-decoration: none; }
+    .bc-btn:active { opacity: 0.85; }
+
+    /* Kısa tanıtım */
+    .bio { margin: 0; font-size: 15px; line-height: 22px; color: var(--ink-muted); }
+
+    /* Sosyal bağlantılar */
+    .social { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+    .social .bc-btn { width: auto; padding: 0 var(--space-4); }
+
+    /* Bölümler */
+    .section { margin-top: var(--space-6); }
+    .section-title {
+      display: flex; align-items: center; gap: var(--space-2);
+      margin: 0 0 var(--space-2); font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink);
+    }
+    .section-title .bc-btn-dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--accent); }
+    .section-text { margin: 0 0 var(--space-3); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+    .center { text-align: center; }
+
+    /* Form */
+    .form { display: flex; flex-direction: column; gap: var(--space-3); }
+    .field { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+    .field label { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+    .input {
+      min-height: 48px; width: 100%; box-sizing: border-box;
+      padding: 0 var(--space-3);
+      border: 1.5px solid var(--line-strong); border-radius: var(--radius-md);
+      background: var(--surface-raised); color: var(--ink);
+      font-family: var(--font-sans); font-size: 15px; line-height: 22px;
+    }
+    .input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .input[aria-invalid="true"] { border-color: var(--danger); }
+    .error { margin: 0; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--danger); }
+    .consent { display: flex; gap: var(--space-2); align-items: flex-start; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+    .consent input { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--brand); }
+    .consent input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .link { color: var(--brand); }
+    .link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .form-status { margin: 0; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--ink); }
+
+    /* QR */
+    .qr { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+    .qr svg { width: 128px; height: 128px; color: var(--ink); }
+
+    /* Projeler */
+    .projects { display: flex; flex-direction: column; gap: var(--space-3); }
+    .project { border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-4); }
+    .project h3 { margin: 0 0 var(--space-1); font-size: 15px; line-height: 22px; font-weight: 600; color: var(--ink); }
+    .project p { margin: 0 0 var(--space-3); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+    /* Soru sor: sabit buton + sohbet penceresi */
+    .ask {
+      position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 2;
+      width: auto; padding: 0 var(--space-6); border-radius: var(--radius-full);
+    }
+    .chat {
+      position: fixed; right: var(--space-4); bottom: calc(48px + var(--space-6)); z-index: 2;
+      width: min(340px, calc(100vw - 2 * var(--space-4))); max-height: calc(100vh - 120px);
+      display: flex; flex-direction: column; gap: var(--space-3); box-sizing: border-box;
+      padding: var(--space-4); border: 1px solid var(--line-strong); border-radius: var(--radius-lg);
+      background: var(--surface-raised); color: var(--ink);
+    }
+    .chat-log { display: flex; flex-direction: column; gap: var(--space-2); overflow-y: auto; min-height: 0; }
+    .msg { max-width: 85%; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+           font-size: 14px; line-height: 20px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .msg-user { align-self: flex-end; background: var(--brand); color: var(--on-brand); }
+    .msg-bot  { align-self: flex-start; background: var(--surface-sunken); color: var(--ink); }
+    .msg-error { align-self: flex-start; color: var(--danger); background: var(--surface-sunken); }
+
+    .footer {
+      display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
+      font-family: var(--font-sans);
+      font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--ink-muted);
+      text-align: center;
+      margin: 0 0 var(--space-8);
+    }
+    .footer strong { font-weight: 700; color: var(--ink); letter-spacing: 0; }
+    .footer a { color: var(--ink-muted); }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bc-btn { transition: none; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.26.4/babel.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js" crossorigin></script>
+</head>
+<body class="bc-root">
+  <div id="root"></div>
+
+  <script type="text/babel" data-presets="react">
+    /* ================================================
+       BİLGİLERİNİZİ BURADAN DEĞİŞTİRİN
+       ================================================ */
+    const PROFILE = {
+      firstName: "Ahmetcan",
+      lastName:  "Sakız",
+      title:     "Co-founder",
+      company:   "IBA Consultancy",
+      bio:       "Power Platform ve otomasyon ile işleri hızlandırıyorum.",
+      phone:     "+905449089905",          // boşluksuz, ülke koduyla
+      phoneText: "+90 544 908 99 05",      // ekranda görünen hali
+      email:     "ahmetcan.sakiz@ibaconsultancy.com.tr",
+      website:   "https://ibaconsultancy.com.tr",
+      location:  "",                       // boşsa satır görünmez
+      linkedin:  "https://www.linkedin.com/in/kullaniciadi",
+      github:    "https://github.com/kullaniciadi",
+      photo:     "",                       // örn. "foto.jpg"; boşsa baş harfler görünür
+      cardUrl:   "https://bizcard-web-peach.vercel.app",  // QR kodun açacağı adres
+      kvkkUrl:   "kvkk-aydinlatma-metni.html", // KVKK Aydınlatma Metni adresi
+      privacyUrl:"gizlilik-politikasi.html",   // Gizlilik Politikası adresi
+      meetingWebhook: "",                  // n8n webhook adresi; boşsa e-posta taslağı açılır
+      chatWebhook:    "",                  // n8n Chat Trigger adresi ("Soru sor" penceresi)
+      projects: [
+        { name: "BizCard",
+          text: "Dijital kartvizit: web, iOS ve Android'de yayında. n8n akışlarıyla konuşuyor.",
+          tags: ["React", "Expo", "n8n"] },
+        { name: "Operasyon Planlama Sistemi",
+          text: "Power Platform üzerinde üretim planlama ve takip uygulaması.",
+          tags: ["Power Apps", "Dataverse"] },
+        { name: "Süreç Otomasyonu Danışmanlığı",
+          text: "Tekrar eden ofis işlerini n8n ve Power Automate ile otomatiğe bağlama.",
+          tags: ["n8n", "Power Automate"] }
+      ]
+    };
+    /* ================================================ */
+
+    const { useState, useEffect, useMemo } = React;
+
+    const fullNameOf = p => `${p.firstName} ${p.lastName}`;
+    const stripProto = url => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    const pad = n => String(n).padStart(2, "0");
+    const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+
+    // vCard (rehbere kaydetmek için)
+    const esc = s => String(s).replace(/([\\,;])/g, "\\$1");
+    function buildVCard(p) {
+      return [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${esc(p.lastName)};${esc(p.firstName)};;;`,
+        `FN:${esc(fullNameOf(p))}`,
+        `ORG:${esc(p.company)}`,
+        `TITLE:${esc(p.title)}`,
+        `TEL;TYPE=CELL:${p.phone}`,
+        `EMAIL:${p.email}`,
+        `URL:${p.website}`,
+        p.linkedin && `URL;TYPE=LinkedIn:${p.linkedin}`,
+        p.github && `URL;TYPE=GitHub:${p.github}`,
+        p.location && `ADR:;;;${esc(p.location)};;;`,
+        "END:VCARD"
+      ].filter(Boolean).join("\r\n");
+    }
+
+    // İkonlar (design system: stroke="currentColor")
+    const Svg = ({ children }) => (
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">{children}</svg>
+    );
+    const Icon = {
+      phone:    <Svg><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></Svg>,
+      mail:     <Svg><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></Svg>,
+      globe:    <Svg><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></Svg>,
+      pin:      <Svg><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></Svg>,
+      save:     <Svg><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></Svg>,
+      calendar: <Svg><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></Svg>
+    };
+
+    function Avatar({ firstName, lastName, photo }) {
+      const initials = (firstName[0] + (lastName[0] || "")).toLocaleUpperCase("tr");
+      return (
+        <div className="bc-avatar" aria-hidden="true">
+          {photo ? <img src={photo} alt="" /> : initials}
+        </div>
+      );
+    }
+
+    function ContactList({ profile: p }) {
+      const rows = [
+        p.phone    && { label: "Telefon", value: p.phoneText,           href: `tel:${p.phone}`,    icon: Icon.phone },
+        p.email    && { label: "E-posta", value: p.email,               href: `mailto:${p.email}`, icon: Icon.mail },
+        p.website  && { label: "Web",     value: stripProto(p.website), href: p.website,           icon: Icon.globe, external: true },
+        p.location && { label: "Konum",   value: p.location,
+          href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.location)}`,
+          icon: Icon.pin, external: true }
+      ].filter(Boolean);
+      const social = [
+        p.linkedin && { label: "LinkedIn", href: p.linkedin },
+        p.github   && { label: "GitHub",   href: p.github }
+      ].filter(Boolean);
+      return (
+        <>
+          <div className="bc-list">
+            {rows.map(r => (
+              <a key={r.label} className="bc-row" href={r.href}
+                 {...(r.external ? { target: "_blank", rel: "noopener" } : {})}>
+                <span className="bc-row-icon">{r.icon}</span>
+                <span className="bc-row-text">
+                  <span className="bc-row-label">{r.label}</span>
+                  <span className="bc-row-value">{r.value}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+          {social.length > 0 && (
+            <div className="social">
+              {social.map(s => (
+                <a key={s.label} className="bc-btn bc-btn-secondary" href={s.href} target="_blank" rel="noopener">{s.label}</a>
+              ))}
+            </div>
+          )}
+        </>
+      );
+    }
+
+    // Saat seçenekleri: 09:00 - 18:00, 30 dakikada bir
+    const TIME_SLOTS = [];
+    for (let h = 9; h < 18; h++) TIME_SLOTS.push(`${pad(h)}:00`, `${pad(h)}:30`);
+
+    const SLOT_MINUTES = 30;
+
+    // "2026-10-05T14:30:00+03:00" biçiminde, ziyaretçinin saat dilimiyle
+    function toLocalISO(d) {
+      const off = -d.getTimezoneOffset();
+      const sign = off >= 0 ? "+" : "-";
+      const a = Math.abs(off);
+      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
+        `T${pad(d.getHours())}:${pad(d.getMinutes())}:00${sign}${pad(Math.floor(a / 60))}:${pad(a % 60)}`;
+    }
+
+    // Webhook gövdesi — şema: meeting-webhook.schema.json
+    function buildMeetingPayload(form, p, dateText) {
+      const start = new Date(`${form.date}T${form.time}`);
+      const end = new Date(start.getTime() + SLOT_MINUTES * 60000);
+      return {
+        type: "meeting_request",
+        version: 1,
+        submittedAt: new Date().toISOString(),
+        contact: {
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim() || null
+        },
+        topic: form.topic.trim(),
+        meeting: {
+          date: form.date,
+          time: form.time,
+          start: toLocalISO(start),
+          end: toLocalISO(end),
+          durationMinutes: SLOT_MINUTES,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          displayText: `${dateText}, ${form.time}`
+        },
+        kvkkNoticeRead: form.consent,
+        recipient: { name: `${p.firstName} ${p.lastName}`, email: p.email },
+        source: { page: window.location.href }
+      };
+    }
+
+    function MeetingForm({ profile: p, onStatus }) {
+      const empty = { name: "", email: "", phone: "", topic: "", date: "", time: "", consent: false };
+      const [form, setForm] = useState(empty);
+      const [errors, setErrors] = useState({});
+      const [sending, setSending] = useState(false);
+      const [message, setMessage] = useState("");
+
+      // Bugün seçiliyse geçmiş saatleri gizle
+      const slots = useMemo(() => {
+        if (form.date !== todayISO()) return TIME_SLOTS;
+        const now = new Date();
+        const nowStr = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        return TIME_SLOTS.filter(t => t > nowStr);
+      }, [form.date]);
+
+      const set = key => e => {
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        setForm(f => {
+          const next = { ...f, [key]: value };
+          if (key === "date") next.time = "";
+          return next;
+        });
+      };
+
+      function validate() {
+        const e = {};
+        if (!form.name.trim()) e.name = "Hata: adınızı yazın.";
+        if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email = "Hata: geçerli bir e-posta yazın.";
+        if (!form.topic.trim()) e.topic = "Hata: konuyu yazın.";
+        if (!form.date || form.date < todayISO()) e.date = "Hata: bir tarih seçin.";
+        if (!form.time) e.time = "Hata: bir saat seçin.";
+        if (!form.consent) e.consent = "Hata: devam etmek için onay verin.";
+        return e;
+      }
+
+      async function handleSubmit(ev) {
+        ev.preventDefault();
+        const e = validate();
+        setErrors(e);
+        if (Object.keys(e).length) { setMessage(""); return; }
+
+        const dateText = new Date(`${form.date}T${form.time}`).toLocaleDateString("tr-TR",
+          { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+        setSending(true);
+        setMessage("Gönderiliyor…");
+        try {
+          if (p.meetingWebhook) {
+            const res = await fetch(p.meetingWebhook, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(buildMeetingPayload(form, p, dateText))
+            });
+            if (!res.ok) throw new Error(res.status);
+          } else {
+            // Webhook yoksa e-posta taslağı açılır
+            const body = `Merhaba ${p.firstName},\n\nSizinle bir toplantı planlamak istiyorum.\n\n` +
+              `Ad Soyad: ${form.name}\nE-posta: ${form.email}\nTelefon: ${form.phone || "-"}\n` +
+              `Konu: ${form.topic}\nTarih: ${dateText}\nSaat: ${form.time}\n`;
+            window.location.href = `mailto:${p.email}?subject=${encodeURIComponent("Toplantı talebi: " + form.topic)}` +
+              `&body=${encodeURIComponent(body)}`;
+          }
+          const ok = p.meetingWebhook
+            ? `Talebiniz alındı: ${dateText}, ${form.time}.`
+            : "E-posta taslağı açıldı. Göndermek için e-postayı onaylayın.";
+          setMessage(ok);
+          onStatus(ok);
+          setForm(empty);
+        } catch (err) {
+          const fail = "Hata: bağlantı kurulamadı. Tekrar deneyin.";
+          setMessage(fail);
+          onStatus(fail);
+        }
+        setSending(false);
+      }
+
+      const field = (key, label, type = "text", extra = {}) => (
+        <div className="field">
+          <label htmlFor={`f-${key}`}>{label}</label>
+          <input id={`f-${key}`} className="input" type={type} value={form[key]} onChange={set(key)}
+                 aria-invalid={errors[key] ? "true" : undefined}
+                 aria-describedby={errors[key] ? `e-${key}` : undefined} {...extra} />
+          {errors[key] && <p className="error" id={`e-${key}`}>{errors[key]}</p>}
+        </div>
+      );
+
+      return (
+        <section className="section" aria-labelledby="meet-title">
+          <h2 className="section-title" id="meet-title">
+            <span className="bc-btn-dot" aria-hidden="true"></span>
+            Toplantı Talep Et
+          </h2>
+          <form className="form" onSubmit={handleSubmit} noValidate>
+            {field("name", "Ad Soyad", "text", { autoComplete: "name" })}
+            {field("email", "E-posta", "email", { autoComplete: "email" })}
+            {field("phone", "Telefon", "tel", { autoComplete: "tel" })}
+            {field("topic", "Konu")}
+
+            <div className="field-row">
+              {field("date", "Tarih", "date", { min: todayISO() })}
+              <div className="field">
+                <label htmlFor="f-time">Saat</label>
+                <select id="f-time" className="input" value={form.time} onChange={set("time")}
+                        disabled={!form.date}
+                        aria-invalid={errors.time ? "true" : undefined}
+                        aria-describedby={errors.time ? "e-time" : undefined}>
+                  <option value="">{form.date ? "Seçin" : "Önce tarih"}</option>
+                  {slots.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
+                {errors.time && <p className="error" id="e-time">{errors.time}</p>}
+              </div>
+            </div>
+            {form.date && slots.length === 0 && (
+              <p className="error">Bugün için uygun saat kalmadı. Başka bir gün seçin.</p>
+            )}
+
+            <label className="consent">
+              <input type="checkbox" checked={form.consent} onChange={set("consent")}
+                     aria-invalid={errors.consent ? "true" : undefined} />
+              <span>
+                <a className="link" href={p.kvkkUrl} target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni okudum.
+              </span>
+            </label>
+            {errors.consent && <p className="error">{errors.consent}</p>}
+
+            <button className="bc-btn bc-btn-accent" type="submit" disabled={sending}>
+              {Icon.calendar}
+              <span>{sending ? "Gönderiliyor…" : "Talep Gönder"}</span>
+            </button>
+            {message && <p className="form-status">{message}</p>}
+          </form>
+        </section>
+      );
+    }
+
+    function SaveCard({ profile: p, onStatus }) {
+      const [saveLabel, setSaveLabel] = useState("Kartı Kaydet");
+      const [saving, setSaving] = useState(false);
+
+      // Kartı Kaydet: Kaydediliyor… → Kart kaydedildi → Kartı Kaydet
+      function handleSave() {
+        setSaving(true);
+        setSaveLabel("Kaydediliyor…");
+        let result;
+        try {
+          const blob = new Blob([buildVCard(p)], { type: "text/vcard;charset=utf-8" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = `${fullNameOf(p).replace(/\s+/g, "_")}.vcf`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+          result = "Kart kaydedildi";
+        } catch (e) {
+          result = "Hata: kaydedilemedi. Tekrar deneyin.";
+        }
+        setSaving(false);
+        setSaveLabel(result);
+        onStatus(result);
+        setTimeout(() => setSaveLabel("Kartı Kaydet"), 2000);
+      }
+
+      return (
+        <section className="section center" aria-labelledby="save-title">
+          <h2 className="section-title" id="save-title" style={{ justifyContent: "center" }}>Kartviziti telefonunuza ekleyin</h2>
+          <p className="section-text">Kartvizitimi rehberinize ekleyin. Yukarıdaki formu da doldurduysanız size ayrıca ulaşabilirim.</p>
+          <button className="bc-btn bc-btn-primary" type="button" disabled={saving} onClick={handleSave}>
+            {Icon.save}
+            <span>{saveLabel}</span>
+          </button>
+        </section>
+      );
+    }
+
+    function QrCode({ url }) {
+      const cells = useMemo(() => {
+        if (!window.qrcode) return null;
+        const qr = window.qrcode(0, "M");
+        qr.addData(url);
+        qr.make();
+        const n = qr.getModuleCount(), out = [];
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (qr.isDark(r, c)) out.push(`M${c} ${r}h1v1h-1z`);
+        return { n, d: out.join("") };
+      }, [url]);
+      if (!cells) return null;
+      return (
+        <section className="section qr">
+          <svg viewBox={`-2 -2 ${cells.n + 4} ${cells.n + 4}`} role="img" aria-label={`QR kod: ${url}`} shapeRendering="crispEdges">
+            <path d={cells.d} fill="currentColor" />
+          </svg>
+          <p className="section-text">Telefonla tarayın: {stripProto(url)}</p>
+        </section>
+      );
+    }
+
+    function Projects({ projects }) {
+      if (!projects || !projects.length) return null;
+      return (
+        <section className="section" aria-labelledby="proj-title">
+          <h2 className="section-title" id="proj-title">Projelerim</h2>
+          <div className="projects">
+            {projects.map(pr => (
+              <article key={pr.name} className="project">
+                <h3>{pr.name}</h3>
+                <p>{pr.text}</p>
+                <div className="tags">
+                  {pr.tags.map(t => <span key={t} className="bc-chip">{t}</span>)}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function ProfileCard({ profile: p, onStatus }) {
+      const fullName = fullNameOf(p);
+      return (
+        <article className="bc-card">
+          <div className="bc-card-head">
+            <Avatar firstName={p.firstName} lastName={p.lastName} photo={p.photo} />
+            <div>
+              <h1 className="bc-name">{fullName}</h1>
+              <p className="bc-role">{[p.title, p.company].filter(Boolean).join(" · ")}</p>
+            </div>
+            {p.bio && <p className="bio">{p.bio}</p>}
+          </div>
+
+          <hr className="bc-divider" />
+          <ContactList profile={p} />
+
+          <hr className="bc-divider" />
+          <MeetingForm profile={p} onStatus={onStatus} />
+
+          <hr className="bc-divider" />
+          <SaveCard profile={p} onStatus={onStatus} />
+
+          <hr className="bc-divider" />
+          <QrCode url={p.cardUrl || window.location.href} />
+
+          <hr className="bc-divider" />
+          <Projects projects={p.projects} />
+        </article>
+      );
+    }
+
+    // Soru sor: n8n Chat Trigger ile konuşur. Sohbet yalnızca bu sayfa açıkken tutulur.
+    function ChatWidget({ profile: p }) {
+      const [open, setOpen] = useState(false);
+      const [messages, setMessages] = useState([]);
+      const [text, setText] = useState("");
+      const [sending, setSending] = useState(false);
+      const [sessionId] = useState(() =>
+        (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random());
+      const logRef = React.useRef(null);
+      const inputRef = React.useRef(null);
+
+      useEffect(() => { if (open && inputRef.current) inputRef.current.focus(); }, [open]);
+      useEffect(() => { if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight; }, [messages, sending]);
+      useEffect(() => {
+        const onKey = e => { if (e.key === "Escape") setOpen(false); };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+      }, []);
+
+      async function send(ev) {
+        ev.preventDefault();
+        const q = text.trim();
+        if (!q || sending) return;
+        setMessages(m => [...m, { role: "user", text: q }]);
+        setText("");
+        if (!p.chatWebhook) {
+          setMessages(m => [...m, { role: "error", text: "Hata: sohbet henüz bağlı değil. Lütfen e-posta ile yazın." }]);
+          return;
+        }
+        setSending(true);
+        try {
+          const res = await fetch(p.chatWebhook, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "sendMessage", sessionId, chatInput: q })
+          });
+          if (!res.ok) throw new Error(res.status);
+          const data = await res.json();
+          const reply = Array.isArray(data) ? data[0] : data;
+          setMessages(m => [...m, { role: "bot", text: (reply && (reply.output || reply.text)) || "Cevap alınamadı." }]);
+        } catch (err) {
+          setMessages(m => [...m, { role: "error", text: "Hata: bağlantı kurulamadı. Tekrar deneyin." }]);
+        }
+        setSending(false);
+      }
+
+      return (
+        <>
+          {open && (
+            <div className="chat" id="chat-panel" role="dialog" aria-label="Soru sor">
+              <p className="section-text" style={{ margin: 0 }}>
+                {fullNameOf(p)} hakkında soru sorun. Cevaplar paylaşılan dokümanlardan üretilir.
+              </p>
+              {messages.length > 0 && (
+                <div className="chat-log" ref={logRef} aria-live="polite">
+                  {messages.map((m, i) => <div key={i} className={`msg msg-${m.role}`}>{m.text}</div>)}
+                  {sending && <div className="msg msg-bot">Yazıyor…</div>}
+                </div>
+              )}
+              <form className="form" onSubmit={send}>
+                <div className="field">
+                  <label htmlFor="chat-input">Sorunuz</label>
+                  <input id="chat-input" ref={inputRef} className="input" value={text}
+                         onChange={e => setText(e.target.value)} placeholder="Örn: Hangi projelerde çalıştı?"
+                         autoComplete="off" />
+                </div>
+                <button className="bc-btn bc-btn-primary" type="submit" disabled={sending || !text.trim()}>
+                  {sending ? "Gönderiliyor…" : "Gönder"}
+                </button>
+              </form>
+              <p className="section-text" style={{ margin: 0 }}>Sohbet kaydedilmez, sadece bu oturumda tutulur.</p>
+            </div>
+          )}
+          <button className="bc-btn bc-btn-primary ask" type="button"
+                  aria-expanded={open} aria-controls="chat-panel" onClick={() => setOpen(o => !o)}>
+            {open ? "Kapat" : "Soru sor"}
+          </button>
+        </>
+      );
+    }
+
+    function App() {
+      const [status, setStatus] = useState("");
+      useEffect(() => { document.title = `${fullNameOf(PROFILE)} · BizCard`; }, []);
+      return (
+        <main className="page">
+          <ProfileCard profile={PROFILE} onStatus={setStatus} />
+          <footer className="footer">
+            <strong>BizCard</strong>
+            <a href={PROFILE.privacyUrl} target="_blank" rel="noopener">Gizlilik Politikası</a>
+          </footer>
+          <ChatWidget profile={PROFILE} />
+          <p className="sr-only" aria-live="polite">{status}</p>
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

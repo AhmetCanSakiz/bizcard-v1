@@ -1,0 +1,1 @@
+Line icons on a 24px grid, 1.75px stroke, round caps and joins. The uploaded SVGs are drawn in `ink` (#1C2426); in code, inline the SVG and set `stroke="currentColor"` so it follows `brand` or `on-brand`. Show at 20px inside a 36px `brand-soft` tile in contact rows, and at 20px next to button labels.

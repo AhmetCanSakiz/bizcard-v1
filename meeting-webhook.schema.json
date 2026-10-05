@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "meeting-webhook.schema.json",
+  "title": "Bizcard toplantı talebi webhook gövdesi",
+  "description": "\"Talep Gönder\" düğmesi bu JSON'u PROFILE.meetingWebhook adresine POST eder (Content-Type: application/json).",
+  "type": "object",
+  "required": ["type", "version", "submittedAt", "contact", "topic", "meeting", "kvkkNoticeRead", "recipient", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "type": { "const": "meeting_request" },
+    "version": { "const": 1 },
+    "submittedAt": { "type": "string", "format": "date-time", "description": "Gönderim anı, UTC (ör. 2026-10-01T19:42:10.123Z)" },
+    "contact": {
+      "type": "object",
+      "required": ["name", "email", "phone"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "description": "Ad Soyad" },
+        "email": { "type": "string", "format": "email", "description": "E-posta" },
+        "phone": { "type": ["string", "null"], "description": "Telefon; boş bırakılırsa null" }
+      }
+    },
+    "topic": { "type": "string", "minLength": 1, "description": "Konu" },
+    "meeting": {
+      "type": "object",
+      "required": ["date", "time", "start", "end", "durationMinutes", "timezone", "displayText"],
+      "additionalProperties": false,
+      "properties": {
+        "date": { "type": "string", "format": "date", "description": "Tarih seçici değeri (YYYY-MM-DD)" },
+        "time": { "type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$", "description": "Saat seçici değeri (HH:MM, 09:00–17:30 arası, 30 dk aralık)" },
+        "start": { "type": "string", "format": "date-time", "description": "Başlangıç, ziyaretçinin saat dilimi ofsetiyle (ör. 2026-10-05T14:30:00+03:00)" },
+        "end": { "type": "string", "format": "date-time", "description": "Bitiş = start + durationMinutes" },
+        "durationMinutes": { "type": "integer", "const": 30 },
+        "timezone": { "type": "string", "description": "IANA saat dilimi (ör. Europe/Istanbul)" },
+        "displayText": { "type": "string", "description": "Okunur metin (ör. 5 Ekim 2026 Pazartesi, 14:30)" }
+      }
+    },
+    "kvkkNoticeRead": { "const": true, "description": "KVKK Aydınlatma Metni'ni okudum kutusu" },
+    "recipient": {
+      "type": "object",
+      "required": ["name", "email"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["page"],
+      "additionalProperties": false,
+      "properties": {
+        "page": { "type": "string", "format": "uri", "description": "Formun gönderildiği sayfa adresi" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "type": "meeting_request",
+      "version": 1,
+      "submittedAt": "2026-10-01T19:42:10.123Z",
+      "contact": { "name": "Ayşe Yılmaz", "email": "ayse@ornek.com", "phone": "+905551112233" },
+      "topic": "Power Platform danışmanlığı",
+      "meeting": {
+        "date": "2026-10-05",
+        "time": "14:30",
+        "start": "2026-10-05T14:30:00+03:00",
+        "end": "2026-10-05T15:00:00+03:00",
+        "durationMinutes": 30,
+        "timezone": "Europe/Istanbul",
+        "displayText": "5 Ekim 2026 Pazartesi, 14:30"
+      },
+      "kvkkNoticeRead": true,
+      "recipient": { "name": "Ahmetcan Sakız", "email": "[E-posta]" },
+      "source": { "page": "https://bizcard-web-peach.vercel.app/" }
+    }
+  ]
+}

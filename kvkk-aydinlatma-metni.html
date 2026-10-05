@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KVKK Aydınlatma Metni · BizCard</title>
+  <meta name="description" content="BizCard dijital kartvizit kişisel verilerin işlenmesine ilişkin aydınlatma metni.">
+  <link rel="stylesheet" href="bizcard-design-system/tokens.css">
+  <link rel="stylesheet" href="bizcard-design-system/bizcard.css">
+  <style>
+    /* Yasal metin sayfası: yalnızca token kullanılır */
+    html, body { margin: 0; }
+    body {
+      background: var(--surface);
+      min-height: 100vh;
+      padding: var(--space-8) var(--space-4);
+      box-sizing: border-box;
+    }
+    .doc { max-width: 680px; margin: 0 auto; font-size: 15px; line-height: 22px; color: var(--ink); overflow-wrap: break-word; }
+    .back {
+      display: inline-flex; align-items: center; gap: var(--space-1);
+      min-height: 48px; padding: 0 var(--space-2); margin-left: calc(-1 * var(--space-2));
+      border-radius: var(--radius-sm);
+      font-size: 14px; line-height: 20px; font-weight: 600; color: var(--brand); text-decoration: none;
+    }
+    .back svg { width: 20px; height: 20px; }
+    .back:hover { background: var(--surface-sunken); }
+    .doc a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .doc-title { margin: var(--space-4) 0 var(--space-4); font-size: 20px; line-height: 28px; font-weight: 700; color: var(--ink); }
+    .doc h2 { margin: var(--space-6) 0 var(--space-3); font-size: 16px; line-height: 22px; font-weight: 700; color: var(--ink); scroll-margin-top: var(--space-4); }
+    .doc h3 { margin: var(--space-6) 0 var(--space-2); font-size: 15px; line-height: 22px; font-weight: 600; color: var(--ink); }
+    .doc p { margin: 0 0 var(--space-3); }
+    .doc .meta { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+    .doc .meta strong { color: var(--ink); }
+    .doc ul, .doc ol { margin: 0 0 var(--space-3); padding-left: var(--space-6); }
+    .doc li { margin-bottom: var(--space-2); }
+    .doc ul.lettered { list-style: none; padding-left: 0; }
+    .doc code { font-size: 14px; padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--surface-sunken); }
+    .doc .bc-divider { margin: var(--space-6) 0; }
+    .note { margin: 0 0 var(--space-3); padding: var(--space-3) var(--space-4); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: var(--surface-sunken); }
+    .note p { margin: 0; }
+    .table-wrap { overflow-x: auto; margin: 0 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-raised); -webkit-overflow-scrolling: touch; }
+    .doc table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 20px; }
+    .doc th, .doc td { text-align: left; vertical-align: top; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); min-width: 120px; }
+    .doc thead th { font-weight: 600; color: var(--ink); background: var(--surface-sunken); }
+    .doc tbody th { font-weight: 600; }
+    .doc tbody tr:last-child th, .doc tbody tr:last-child td { border-bottom: 0; }
+    /* Doldurulması gereken yer tutucular */
+    mark.ph { background: var(--brand-soft); color: var(--ink); border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); padding: 0 var(--space-1); }
+    .doc-footer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); margin-top: var(--space-8); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-muted); }
+    .doc-footer a:not(.back) { display: inline-flex; align-items: center; min-height: 48px; color: var(--ink-muted); }
+    .doc-footer strong { font-weight: 700; color: var(--ink); letter-spacing: 0; }
+  </style>
+</head>
+<body class="bc-root">
+  <main class="doc">
+    <a class="back" href="index.html" data-back><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Karta dön</a>
+
+    <h1 class="doc-title">BizCard Dijital Kartvizit — Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni</h1>
+
+    <p class="meta"><strong>Yürürlük tarihi:</strong> <mark class="ph">[Yürürlük Tarihi]</mark><br>
+    <strong>Son güncelleme:</strong> <mark class="ph">[Son Güncelleme Tarihi]</mark></p>
+
+    <p>Bu Aydınlatma Metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun ("KVKK") 10. maddesi ile Aydınlatma Yükümlülüğünün Yerine Getirilmesinde Uyulacak Usul ve Esaslar Hakkında Tebliğ uyarınca, BizCard dijital kartvizit sayfasını (<mark class="ph">[Kartvizit Web Adresi]</mark>) ziyaret eden ve sayfadaki özellikleri kullanan kişileri ("Ziyaretçi" veya "siz") bilgilendirmek amacıyla hazırlanmıştır.</p>
+
+    <p>Bu metin yalnızca bilgilendirme amaçlıdır; sizden açık rıza alınmasına yönelik bir beyan içermez.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b1">1. Veri Sorumlusu</h2>
+
+    <p>KVKK kapsamında veri sorumlusu:</p>
+
+    <div class="table-wrap"><table>
+    <tbody>
+    <tr><th scope="row"><strong>Unvan</strong></th><td><mark class="ph">[Şirket Unvanı]</mark></td></tr>
+    <tr><th scope="row"><strong>MERSİS No</strong></th><td><mark class="ph">[MERSİS No]</mark></td></tr>
+    <tr><th scope="row"><strong>Adres</strong></th><td><mark class="ph">[Adres]</mark></td></tr>
+    <tr><th scope="row"><strong>KEP adresi</strong></th><td><mark class="ph">[KEP Adresi]</mark></td></tr>
+    <tr><th scope="row"><strong>E-posta</strong></th><td><mark class="ph">[E-posta]</mark></td></tr>
+    <tr><th scope="row"><strong>Telefon</strong></th><td><mark class="ph">[Telefon]</mark></td></tr>
+    <tr><th scope="row"><strong>VERBİS kayıt no (varsa)</strong></th><td><mark class="ph">[VERBİS Kayıt No]</mark></td></tr>
+    <tr><th scope="row"><strong>Veri sorumlusu temsilcisi (varsa)</strong></th><td><mark class="ph">[Veri Sorumlusu Temsilcisi]</mark></td></tr>
+    </tbody>
+    </table></div>
+
+    <hr class="bc-divider">
+
+    <h2 id="b2">2. İşlenen Kişisel Veri Kategorileri</h2>
+
+    <p>BizCard sayfası üyelik, giriş veya hesap oluşturma gerektirmez. Sayfada çerez (cookie), yerel depolama (localStorage/sessionStorage) ya da analiz/izleme aracı kullanılmamaktadır. Sizinle ilgili kişisel veriler yalnızca aşağıdaki durumlarda işlenir:</p>
+
+    <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Veri kategorisi</th><th scope="col">Veriler</th><th scope="col">Ne zaman işlenir?</th></tr></thead>
+    <tbody>
+    <tr><td><strong>Kimlik</strong></td><td>Ad soyad</td><td>"Toplantı Talep Et" formunu doldurduğunuzda</td></tr>
+    <tr><td><strong>İletişim</strong></td><td>E-posta adresi, telefon numarası (isteğe bağlı alan)</td><td>"Toplantı Talep Et" formunu doldurduğunuzda</td></tr>
+    <tr><td><strong>Talep / işlem bilgisi</strong></td><td>Toplantı konusu, talep edilen tarih ve saat, formdaki onay kutusunun işaretlenmiş olduğu bilgisi</td><td>"Toplantı Talep Et" formunu gönderdiğinizde</td></tr>
+    <tr><td><strong>Talep / işlem bilgisi (sohbet)</strong></td><td>"Soru sor" penceresine yazdığınız mesaj metni ve tarayıcınızda rastgele üretilen oturum kimliği (sessionId)</td><td>"Soru sor" özelliğini kullandığınızda</td></tr>
+    <tr><td><strong>İşlem güvenliği / teknik veri</strong></td><td>IP adresi, tarayıcı ve cihaz bilgisi (user-agent), yönlendiren sayfa bilgisi, erişim zamanı</td><td>Sayfayı açtığınızda; sayfanın barındırıldığı sunucu ve sayfanın kullandığı üçüncü taraf içerik sağlayıcıları (yazı tipi ve yazılım kütüphanesi sunucuları) tarafından, iletişimin teknik gereği olarak</td></tr>
+    </tbody>
+    </table></div>
+
+    <p><strong>Önemli notlar:</strong></p>
+
+    <ul>
+    <li>"Soru sor" alanı serbest metindir. Lütfen bu alana özel nitelikli kişisel veri (sağlık, din, etnik köken, biyometrik veri vb.) veya gerekli olmayan kişisel bilgi yazmayınız.</li>
+    <li>"Kartı Kaydet" düğmesi, kartvizit sahibinin iletişim bilgilerini içeren .vcf dosyasını <strong>tamamen cihazınızda</strong> oluşturur. Bu işlem sırasında sizinle ilgili herhangi bir veri tarafımıza iletilmez.</li>
+    <li>QR kod cihazınızda oluşturulur; QR kodun taranması sayfamız tarafından kayıt altına alınmaz.</li>
+    <li>Telefon, e-posta, web sitesi, LinkedIn, GitHub veya harita bağlantılarına tıkladığınızda ilgili uygulama ya da üçüncü taraf siteye yönlendirilirsiniz. Bu sitelerdeki veri işlemeleri ilgili sitelerin kendi aydınlatma metinlerine tabidir.</li>
+    </ul>
+
+    <hr class="bc-divider">
+
+    <h2 id="b3">3. Kişisel Verilerin İşlenme Amaçları</h2>
+
+    <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Amaç</th><th scope="col">İlgili veriler</th></tr></thead>
+    <tbody>
+    <tr><td>Toplantı talebinizin alınması, değerlendirilmesi, sizinle iletişime geçilmesi ve toplantının planlanması</td><td>Kimlik, iletişim, toplantı talep bilgisi</td></tr>
+    <tr><td>"Soru sor" penceresinden ilettiğiniz sorulara yanıt verilmesi ve aynı oturumdaki mesajların ilişkilendirilmesi</td><td>Sohbet mesajı, oturum kimliği</td></tr>
+    <tr><td>Sayfanın görüntülenebilmesi; yazı tiplerinin ve yazılım kütüphanelerinin cihazınıza iletilmesi</td><td>Teknik veri</td></tr>
+    <tr><td>Bilgi güvenliği süreçlerinin yürütülmesi, kötüye kullanımın ve hatalı isteklerin tespiti</td><td>Teknik veri</td></tr>
+    <tr><td>Hukuki uyuşmazlıklarda ve yetkili kurum taleplerinde kullanılmak üzere mevzuattan doğan yükümlülüklerin yerine getirilmesi</td><td>İlgili olduğu ölçüde yukarıdaki veriler</td></tr>
+    </tbody>
+    </table></div>
+
+    <hr class="bc-divider">
+
+    <h2 id="b4">4. Kişisel Verilerin İşlenmesinin Hukuki Sebepleri</h2>
+
+    <p>Kişisel verileriniz KVKK'nın 5. maddesinin 2. fıkrasında yer alan aşağıdaki hukuki sebeplere dayanılarak işlenir:</p>
+
+    <ul>
+    <li><strong>Bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması (md. 5/2-c):</strong> Toplantı talebinizin alınması ve sizinle iletişime geçilmesi, talebiniz üzerine olası bir iş ilişkisinin kurulmasına yönelik sözleşme öncesi adımdır.</li>
+    <li><strong>Veri sorumlusunun meşru menfaati (md. 5/2-f):</strong> Sohbet sorularınızın yanıtlanması, sayfanın teknik olarak sunulması ve bilgi güvenliğinin sağlanması; bu işlemelerin temel hak ve özgürlüklerinize zarar vermemesi kaydıyla.</li>
+    <li><strong>Bir hakkın tesisi, kullanılması veya korunması (md. 5/2-e):</strong> Olası uyuşmazlıklarda ilgili kayıtların kullanılması.</li>
+    <li><strong>Hukuki yükümlülüğün yerine getirilmesi (md. 5/2-ç):</strong> Mevzuat gereği yetkili kurum ve kuruluşlara bilgi verilmesi gereken hâller.</li>
+    </ul>
+
+    <p>Sayfa üzerinden <strong>özel nitelikli kişisel veri (KVKK md. 6) talep edilmemektedir.</strong> Serbest metin alanlarına kendi isteğinizle bu tür veri yazmanız hâlinde, söz konusu veriler talebinizin yanıtlanması için gerekli olmadıkça dikkate alınmaz ve <mark class="ph">[Özel Nitelikli Veri İmha Süreci]</mark> uyarınca silinir.</p>
+
+    <p>Yurt dışına aktarım bakımından dayanılan hukuki sebepler 5. bölümde ayrıca açıklanmıştır.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b5">5. Kişisel Verilerin Aktarıldığı Alıcı Grupları ve Aktarım Amaçları</h2>
+
+    <h3 id="b5-1">5.1. Yurt içi ve yurt dışı alıcılar</h3>
+
+    <div class="table-wrap"><table>
+    <thead><tr><th scope="col">Alıcı grubu</th><th scope="col">Aktarılan veriler</th><th scope="col">Amaç</th><th scope="col">Konum</th></tr></thead>
+    <tbody>
+    <tr><td><strong>Barındırma (hosting) hizmet sağlayıcısı</strong> — <mark class="ph">[Barındırma Sağlayıcısı, ör. Vercel Inc.]</mark></td><td>Teknik veri (IP adresi, tarayıcı bilgisi, erişim zamanı)</td><td>Sayfanın internet üzerinden sunulması, sunucu güvenliği</td><td><mark class="ph">[Barındırma Sağlayıcısı Ülkesi]</mark></td></tr>
+    <tr><td><strong>Yazı tipi sağlayıcısı</strong> — Google LLC (Google Fonts)</td><td>Teknik veri (IP adresi, tarayıcı bilgisi, yönlendiren sayfa)</td><td>Sayfada kullanılan "Fraunces" ve "Plus Jakarta Sans" yazı tiplerinin cihazınıza yüklenmesi</td><td>Amerika Birleşik Devletleri ve Google'ın küresel sunucuları</td></tr>
+    <tr><td><strong>İçerik dağıtım ağı (CDN) sağlayıcısı</strong> — jsDelivr ve altyapı sağlayıcıları <mark class="ph">[jsDelivr Altyapı Sağlayıcıları]</mark></td><td>Teknik veri (IP adresi, tarayıcı bilgisi, yönlendiren sayfa)</td><td>Sayfanın çalışması için gerekli yazılım kütüphanelerinin (React, React DOM, Babel, QR kod kütüphanesi) cihazınıza yüklenmesi</td><td>Küresel sunucu ağı (yurt dışı)</td></tr>
+    <tr><td><strong>İş akışı otomasyon hizmeti</strong> — <mark class="ph">[n8n Barındırma Sağlayıcısı / n8n Sunucu Konumu]</mark></td><td>Toplantı formu verileri (ad soyad, e-posta, telefon, konu, tarih, saat, onay bilgisi); sohbet mesajı ve oturum kimliği</td><td>Toplantı talebinin kartvizit sahibine iletilmesi; sohbet sorularının alınması ve yanıt üretilmesi</td><td><mark class="ph">[n8n Sunucu Ülkesi]</mark></td></tr>
+    <tr><td><strong>Yanıt üretiminde kullanılan alt hizmet sağlayıcıları (varsa)</strong> — <mark class="ph">[Sohbet Akışında Kullanılan Yapay Zekâ / Alt Hizmet Sağlayıcısı]</mark></td><td>Sohbet mesajı, oturum kimliği</td><td>Sorularınıza paylaşılan dokümanlar üzerinden yanıt üretilmesi</td><td><mark class="ph">[Alt Hizmet Sağlayıcısı Ülkesi]</mark></td></tr>
+    <tr><td><strong>E-posta hizmet sağlayıcısı</strong> — <mark class="ph">[E-posta Hizmet Sağlayıcısı]</mark></td><td>Toplantı talebi e-postasında yer alan veriler</td><td>Toplantı talebinizin kartvizit sahibinin e-posta kutusunda alınması ve yanıtlanması</td><td><mark class="ph">[E-posta Sağlayıcısı Ülkesi]</mark></td></tr>
+    <tr><td><strong>Yetkili kamu kurum ve kuruluşları, adli makamlar</strong></td><td>Talep edildiği ölçüde ilgili veriler</td><td>Hukuki yükümlülüklerin yerine getirilmesi</td><td>Türkiye</td></tr>
+    </tbody>
+    </table></div>
+
+    <p><strong>Toplantı formu iki şekilde çalışabilir:</strong></p>
+
+    <ul>
+    <li>Otomasyon (webhook) bağlantısı tanımlıysa form verileri doğrudan yukarıdaki iş akışı otomasyon hizmetine iletilir.</li>
+    <li>Bağlantı tanımlı değilse, form verileri <strong>sizin cihazınızdaki e-posta uygulamasında</strong> bir e-posta taslağı olarak açılır. Bu durumda veriler, siz e-postayı göndermeyi onaylayana kadar hiçbir yere iletilmez; gönderim sizin seçtiğiniz e-posta hizmet sağlayıcısı aracılığıyla yapılır.</li>
+    </ul>
+
+    <h3 id="b5-2">5.2. Yurt dışına aktarım (KVKK md. 9)</h3>
+
+    <p>Yukarıdaki tabloda konumu yurt dışı olan alıcılara (ör. Google Fonts ve jsDelivr CDN sağlayıcıları) aktarım, sayfanın teknik olarak çalışmasının doğal bir sonucudur: Sayfayı açtığınızda tarayıcınız bu sunuculara doğrudan bağlanır ve IP adresiniz ile tarayıcı bilgileriniz bu sağlayıcılara iletilir.</p>
+
+    <p>Bu aktarımlar KVKK'nın 9. maddesi uyarınca:</p>
+
+    <ul>
+    <li>md. 5'te sayılan hukuki sebeplerden birine (bu metnin 4. bölümü) dayanılarak, <strong>ve</strong></li>
+    <li>aktarımın yapıldığı ülke hakkında Kişisel Verileri Koruma Kurulu tarafından verilmiş bir <strong>yeterlilik kararı</strong> bulunması hâlinde bu karara; bulunmaması hâlinde md. 9/4'te sayılan <strong>uygun güvencelerden</strong> birine (Kurulca ilan edilen <strong>standart sözleşme</strong>, bağlayıcı şirket kuralları veya Kurul izniyle yapılan taahhütname) dayanılarak</li>
+    </ul>
+
+    <p>gerçekleştirilir. Her bir yurt dışı alıcı için dayanılan aktarım mekanizması: <mark class="ph">[Yurt Dışı Aktarım Mekanizması — alıcı bazında: yeterlilik kararı / standart sözleşme (Kurum'a bildirim tarihi) / BCR / taahhütname]</mark>.</p>
+
+    <p>Uygun güvence sağlanamayan hâllerde aktarım, yalnızca md. 9/6'da sayılan arızi (düzenli olmayan) aktarım hâllerine dayanılarak yapılabilir.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b6">6. Kişisel Verilerin Toplanma Yöntemi</h2>
+
+    <p>Kişisel verileriniz <strong>elektronik ortamda, otomatik yollarla</strong> ve <strong>kısmen otomatik yollarla</strong> aşağıdaki kanallardan toplanır:</p>
+
+    <ul>
+    <li><strong>Toplantı Talep Et formu:</strong> Sizin tarafınızdan forma girilen bilgiler, web formu aracılığıyla (otomasyon bağlantısı ile) veya cihazınızda oluşturulan e-posta taslağını göndermeniz yoluyla.</li>
+    <li><strong>Soru sor (sohbet) penceresi:</strong> Sizin tarafınızdan yazılan mesajlar, web arayüzü aracılığıyla otomasyon hizmetine iletilerek.</li>
+    <li><strong>Sayfa ziyareti:</strong> Tarayıcınızın sayfayı ve gerekli dosyaları (yazı tipleri, yazılım kütüphaneleri) yüklemek için barındırma ve içerik sağlayıcılarına yaptığı istekler aracılığıyla, internet iletişiminin teknik gereği olarak otomatik yollarla.</li>
+    </ul>
+
+    <p>Sohbet içeriği tarayıcınızda yalnızca sayfa açık kaldığı sürece tutulur; sayfa kapatıldığında tarayıcınızdan silinir. Otomasyon hizmetine iletilen mesajların sunucu tarafında saklanma durumu ve süresi: <mark class="ph">[Sohbet Verisi Saklama Süresi]</mark>.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b7">7. Saklama Süresi</h2>
+
+    <p>Kişisel verileriniz, işleme amacının gerektirdiği süre ve ilgili mevzuatta öngörülen süreler boyunca saklanır; bu sürelerin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
+
+    <ul>
+    <li>Toplantı talebi verileri: <mark class="ph">[Toplantı Talebi Saklama Süresi]</mark></li>
+    <li>Sohbet mesajları ve oturum kimliği: <mark class="ph">[Sohbet Verisi Saklama Süresi]</mark></li>
+    <li>Sunucu erişim kayıtları (teknik veri): <mark class="ph">[Erişim Kaydı Saklama Süresi]</mark></li>
+    </ul>
+
+    <p>Ayrıntılar için: <mark class="ph">[Kişisel Veri Saklama ve İmha Politikası Bağlantısı]</mark></p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b8">8. İlgili Kişi Olarak Haklarınız (KVKK md. 11)</h2>
+
+    <p>KVKK'nın 11. maddesi uyarınca veri sorumlusuna başvurarak:</p>
+
+    <ul class="lettered">
+    <li>a) Kişisel verilerinizin işlenip işlenmediğini öğrenme,</li>
+    <li>b) Kişisel verileriniz işlenmişse buna ilişkin bilgi talep etme,</li>
+    <li>c) Kişisel verilerinizin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+    <li>ç) Yurt içinde veya yurt dışında kişisel verilerinizin aktarıldığı üçüncü kişileri bilme,</li>
+    <li>d) Kişisel verilerinizin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme ve bu kapsamda yapılan işlemin kişisel verilerinizin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+    <li>e) KVKK'nın 7. maddesinde öngörülen şartlar çerçevesinde kişisel verilerinizin silinmesini veya yok edilmesini isteme ve bu kapsamda yapılan işlemin kişisel verilerinizin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+    <li>f) İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme,</li>
+    <li>g) Kişisel verilerinizin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme</li>
+    </ul>
+
+    <p>haklarına sahipsiniz.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b9">9. Başvuru Yöntemi</h2>
+
+    <p>Yukarıdaki haklarınıza ilişkin taleplerinizi, <strong>Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ</strong>'in 5. maddesi uyarınca aşağıdaki yöntemlerden biriyle iletebilirsiniz:</p>
+
+    <ol>
+    <li><strong>Yazılı olarak:</strong> Islak imzalı dilekçe ile <mark class="ph">[Adres]</mark> adresine şahsen başvuru veya noter aracılığıyla gönderim.</li>
+    <li><strong>Kayıtlı elektronik posta (KEP) ile:</strong> <mark class="ph">[KEP Adresi]</mark> adresine.</li>
+    <li><strong>Güvenli elektronik imza veya mobil imza ile:</strong> İmzalı başvurunuzu <mark class="ph">[E-posta]</mark> adresine göndererek.</li>
+    <li><strong>Sistemimizde kayıtlı e-posta adresiniz üzerinden:</strong> Daha önce tarafımıza bildirdiğiniz ve sistemimizde kayıtlı bulunan e-posta adresinizi kullanarak <mark class="ph">[E-posta]</mark> adresine.</li>
+    </ol>
+
+    <p><strong>Başvurunuzda bulunması gereken bilgiler (Tebliğ md. 5/2):</strong></p>
+
+    <ul>
+    <li>Ad, soyad ve başvuru yazılı ise imza,</li>
+    <li>Türkiye Cumhuriyeti vatandaşları için T.C. kimlik numarası; yabancılar için uyruk, pasaport numarası veya varsa kimlik numarası,</li>
+    <li>Tebligata esas yerleşim yeri veya iş yeri adresi,</li>
+    <li>Varsa bildirime esas elektronik posta adresi, telefon ve faks numarası,</li>
+    <li>Talep konusu.</li>
+    </ul>
+
+    <p>Konuya ilişkin bilgi ve belgeler başvuruya eklenmelidir.</p>
+
+    <p><strong>Başvurunun sonuçlandırılması (KVKK md. 13; Tebliğ md. 6-7):</strong> Başvurunuz, talebin niteliğine göre en kısa sürede ve en geç <strong>otuz (30) gün</strong> içinde ücretsiz olarak sonuçlandırılır. İşlemin ayrıca bir maliyet gerektirmesi hâlinde, Tebliğ'de belirtilen ücret tarifesi (10 sayfanın üzerindeki yazılı cevaplar için sayfa başına ücret; CD, flash bellek gibi kayıt ortamında verilmesi hâlinde ortamın maliyeti) uygulanabilir. Başvurunun veri sorumlusunun hatasından kaynaklanması hâlinde alınan ücret iade edilir.</p>
+
+    <p>Kimliğinizi doğrulamak amacıyla sizden ek bilgi talep edilebilir.</p>
+
+    <p><strong>Kurula şikâyet hakkı (KVKK md. 14):</strong> Başvurunuzun reddedilmesi, verilen cevabı yetersiz bulmanız veya süresinde cevap verilmemesi hâllerinde; cevabı öğrendiğiniz tarihten itibaren otuz (30) gün ve her hâlde başvuru tarihinden itibaren altmış (60) gün içinde Kişisel Verileri Koruma Kurulu'na şikâyette bulunabilirsiniz.</p>
+
+    <hr class="bc-divider">
+
+    <h2 id="b10">10. Değişiklikler</h2>
+
+    <p>Bu Aydınlatma Metni, sayfanın işleyişinde veya mevzuatta değişiklik olması hâlinde güncellenebilir. Güncel metin her zaman bu sayfada yayımlanır.</p>
+
+    <p class="meta"><strong>Yürürlük tarihi:</strong> <mark class="ph">[Yürürlük Tarihi]</mark></p>
+
+    <hr class="bc-divider">
+    <footer class="doc-footer">
+      <a class="back" href="index.html" data-back><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Karta dön</a>
+      <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+      <strong>BizCard</strong>
+    </footer>
+  </main>
+  <script>
+    // Karttan gelindiyse aynı karta dön (index.html veya index-react.html)
+    try {
+      var ref = document.referrer ? new URL(document.referrer) : null;
+      if (ref && ref.origin === location.origin) {
+        if (!/(gizlilik-politikasi|kvkk-aydinlatma-metni)\.html$/.test(ref.pathname)) {
+          document.querySelectorAll("[data-back]").forEach(function (a) { a.href = ref.href; });
+        }
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>

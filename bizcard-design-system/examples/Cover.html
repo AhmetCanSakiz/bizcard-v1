@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../bizcard.css">
+<meta charset="utf-8">
+<title>BizCard</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--surface); color:var(--ink); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; }
+  .brand { fill:var(--brand); }
+  .soft { fill:var(--brand-soft); }
+  .deep { fill:var(--ink); }
+  .amber { fill:var(--accent); }
+  .cut { fill:var(--surface); }
+  .blk { rx:var(--radius-lg); }
+  .words { position:absolute; left:var(--space-8); bottom:var(--space-8); max-width:440px; }
+  .name { margin:0; font-family:var(--font-display); font-size:112px; line-height:.9; font-weight:600; letter-spacing:-.02em; color:var(--ink); }
+  .tag { margin:var(--space-3) 0 0 4px; font-size:14px; line-height:20px; color:var(--ink-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      brand 184x248 bled off the top (the identity colour, largest) · brand-soft 120x192 · ink 144x224 bled off the right · accent disc r12 once (it only ever means "meeting") — about 35% of 960x288
+  arrangement one tall teal card-shaped slab with satellites, bottoms aligned space-8 above the edge, space-4 gutters
+  pattern     discs, from "calm, soft 24px card corners" and the round avatar: 12 radius-full discs at a space-6 pitch cut out of the slab in surface, thinning upward; one avatar-sized brand disc on the soft block
+  scales      sides in space-2 multiples; gutters space-4; pitch space-6; corners radius-lg; discs radius-full (avatar 72px = r36)
+-->
+<rect class="brand blk" x="16" y="-24" width="184" height="280" />
+<rect class="soft blk" x="216" y="64" width="120" height="192" />
+<rect class="deep blk" x="352" y="32" width="152" height="224" />
+<circle class="cut" cx="48" cy="200" r="6"/><circle class="cut" cx="72" cy="200" r="6"/><circle class="cut" cx="96" cy="200" r="6"/><circle class="cut" cx="120" cy="200" r="6"/><circle class="cut" cx="144" cy="200" r="6"/><circle class="cut" cx="168" cy="200" r="6"/><circle class="cut" cx="48" cy="176" r="6"/><circle class="cut" cx="72" cy="176" r="6"/><circle class="cut" cx="96" cy="176" r="6"/><circle class="cut" cx="120" cy="176" r="6"/><circle class="cut" cx="48" cy="152" r="6"/><circle class="cut" cx="72" cy="152" r="6"/>
+<circle class="brand" cx="276" cy="128" r="36"/>
+<circle class="amber" cx="384" cy="224" r="12"/>
+</svg>
+</div>
+<div class="words"><h1 class="name">BizCard</h1><p class="tag">Bir dokunuş, kalıcı bir ilk izlenim.</p></div>
+</div>
+</body>
+</html>

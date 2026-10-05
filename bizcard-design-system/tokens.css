@@ -1,0 +1,82 @@
+/* BizCard design tokens, generated from tokens.json. Light is default; dark follows the OS
+   unless <html data-theme="light|dark"> forces one. */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+  --surface: #faf8f5;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1ede7;
+  --ink: #1c2426;
+  --ink-muted: #56615f;
+  --line: #e2dcd3;
+  --line-strong: #808a86;
+  --brand: #0e6b63;
+  --on-brand: #ffffff;
+  --brand-soft: #d7eeea;
+  --accent: #e8963a;
+  --on-accent: #2a1a05;
+  --danger: #b42318;
+  --focus: var(--brand);
+  --shadow-card: 0 1px 2px rgba(28,36,38,0.06), 0 12px 32px rgba(28,36,38,0.10);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #101615;
+    --surface-raised: #182120;
+    --surface-sunken: #0b100f;
+    --ink: #edf2f0;
+    --ink-muted: #9daba8;
+    --line: #2a3533;
+    --line-strong: #6b7a77;
+    --brand: #3fc9b7;
+    --on-brand: #062420;
+    --brand-soft: #173b37;
+    --accent: #f0a955;
+    --on-accent: #2a1a05;
+    --danger: #f97066;
+    --focus: var(--brand);
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.50), 0 12px 32px rgba(0,0,0,0.40);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --surface: #101615;
+  --surface-raised: #182120;
+  --surface-sunken: #0b100f;
+  --ink: #edf2f0;
+  --ink-muted: #9daba8;
+  --line: #2a3533;
+  --line-strong: #6b7a77;
+  --brand: #3fc9b7;
+  --on-brand: #062420;
+  --brand-soft: #173b37;
+  --accent: #f0a955;
+  --on-accent: #2a1a05;
+  --danger: #f97066;
+  --focus: var(--brand);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.50), 0 12px 32px rgba(0,0,0,0.40);
+  color-scheme: dark;
+}
+
+/* Text styles */
+.text-card-name { font-family: var(--font-display); font-size: 32px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; }
+.text-title { font-family: var(--font-sans); font-size: 20px; line-height: 28px; font-weight: 700; }
+.text-role { font-family: var(--font-sans); font-size: 16px; line-height: 22px; font-weight: 500; }
+.text-body { font-family: var(--font-sans); font-size: 15px; line-height: 22px; font-weight: 400; }
+.text-label { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.text-caption { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; }
