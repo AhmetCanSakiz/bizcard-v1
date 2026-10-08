@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "BizCard",
+    "slug": "bizcard",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.ahmetcansakiz.bizcard",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "blockedPermissions": [
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-sharing",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e7b99690-c48c-4e54-89f4-3b01652bc603"
+      }
+    },
+    "owner": "ahmetcansakiz"
+  }
+}
