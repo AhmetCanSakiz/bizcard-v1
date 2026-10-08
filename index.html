@@ -7,6 +7,10 @@
   <meta name="description" content="Ahmet - Power Apps Geliştirici. Dijital kartvizit.">
   <link rel="stylesheet" href="bizcard-design-system/tokens.css">
   <link rel="stylesheet" href="bizcard-design-system/bizcard.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0e6b63">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
     /* Sayfa düzeni: yalnızca token kullanılır */
     html, body { margin: 0; }
@@ -187,6 +191,12 @@
       $("status").textContent = label.textContent;
       setTimeout(() => { label.textContent = "Kartı Kaydet"; }, 2000);
     });
+  </script>
+  <script>
+    // PWA: service worker (sw.js). Webhook istekleri önbelleğe alınmaz.
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+    }
   </script>
 </body>
 </html>
